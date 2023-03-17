@@ -1,5 +1,6 @@
 package com.gradprogram.mylibrary.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.gradprogram.mylibrary.repositories.AuthorRepository;
 import lombok.Data;
@@ -24,6 +25,7 @@ public class Book {
             joinColumns = {@JoinColumn(name = "book_id")},
             inverseJoinColumns = {@JoinColumn(name = "author_id")}
     )
+    @JsonIgnore
     private List<Author> authors;
     private String title;
 
