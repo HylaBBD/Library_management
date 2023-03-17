@@ -1,7 +1,11 @@
 package com.gradprogram.mylibrary.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.gradprogram.mylibrary.repositories.AuthorRepository;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -11,21 +15,21 @@ import java.util.List;
 public class Book {
     @Id
     @GeneratedValue
-    private int book_id;
+    private Long book_id;
     private String isbn;
 
-    @ManyToMany
+    @OneToMany
     @JoinTable(
-            name = "book_authors",
+            name = "books_authors",
             joinColumns = {@JoinColumn(name = "book_id")},
             inverseJoinColumns = {@JoinColumn(name = "author_id")}
     )
     private List<Author> authors;
-    private int title;
+    private String title;
 
-    @ManyToMany
+    @OneToMany
     @JoinTable(
-            name = "book_genres",
+            name = "books_genres",
             joinColumns = {@JoinColumn(name = "book_id")},
             inverseJoinColumns = {@JoinColumn(name = "genre_id")}
     )
@@ -34,4 +38,6 @@ public class Book {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "status_id")
     private Status status;
+
+
 }

@@ -12,6 +12,6 @@ import javax.persistence.Id;
 public class Genre {
     @Id
     @GeneratedValue
-    private int genre_id;
+    private Long genre_id;
     private String genre_name;
 }

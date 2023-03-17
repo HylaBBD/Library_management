@@ -12,7 +12,7 @@ import java.util.List;
 public class Withdrawal {
     @Id
     @GeneratedValue
-    private int withdrawal_id;
+    private Long withdrawal_id;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "customer_id")

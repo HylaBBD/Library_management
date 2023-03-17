@@ -13,7 +13,7 @@ import javax.persistence.Id;
 public class BookGenres {
     @Id
     @GeneratedValue
-    private int books_genres_id;
+    private Long books_genres_id;
     private int book_id;
     private int genre_id;
 }

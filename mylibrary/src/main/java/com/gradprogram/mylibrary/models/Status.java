@@ -12,6 +12,6 @@ import javax.persistence.Id;
 public class Status {
     @Id
     @GeneratedValue
-    private int status_id;
+    private Long status_id;
     private String status;
 }

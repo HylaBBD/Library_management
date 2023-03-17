@@ -1,11 +1,11 @@
 package com.gradprogram.mylibrary.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+
+import javax.persistence.*;
 import java.util.List;
 
 @Data
@@ -14,9 +14,19 @@ import java.util.List;
 public class Author {
     @Id
     @GeneratedValue
-    private int author_id;
+    private Long author_id;
     private String first_name;
     private String last_name;
-    @ManyToMany(mappedBy = "authors")
+    @OneToMany
+    @JoinTable(
+            name = "books_authors",
+            joinColumns = {@JoinColumn(name = "author_id")},
+            inverseJoinColumns = {@JoinColumn(name = "book_id")}
+    )
+    @JsonIgnoreProperties("books")
     private List<Book> books;
+    @Override
+    public String toString (){
+        return first_name + " " + last_name;
+    }
 }
