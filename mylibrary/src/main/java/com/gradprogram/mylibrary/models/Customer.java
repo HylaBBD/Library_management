@@ -1,13 +1,10 @@
 package com.gradprogram.mylibrary.models;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "customers")
 public class Customer {

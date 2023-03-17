@@ -20,14 +20,18 @@ INSERT INTO genres (genre_name) VALUES ('Dystopian');//12
 INSERT INTO genres (genre_name) VALUES ('Political satire');//13
 INSERT INTO genres (genre_name) VALUES ('Horror');//14
 
-INSERT INTO books (isbn, genre_id, author_id, amount, title) VALUES ('1593083327', 9, 5, 10, 'A Tale of Two Cities');
-INSERT INTO books (isbn, genre_id, author_id, amount, title) VALUES ('0671455990', 10, 5, 10, 'A Christmas Carol');
-INSERT INTO books (isbn, genre_id, author_id, amount, title) VALUES ('9781909621411', 11, 6, 10, 'A Farewell To Arms');
-INSERT INTO books (isbn, genre_id, author_id, amount, title) VALUES ('9780451524935', 12, 4, 10, '1984');
-INSERT INTO books (isbn, genre_id, author_id, amount, title) VALUES ('9780451526342', 13, 4, 10, 'Animal Farm');
-INSERT INTO books (isbn, genre_id, author_id, amount, title) VALUES ('9781501142970', 14, 3, 10, 'IT');
-INSERT INTO books (isbn, genre_id, author_id, amount, title) VALUES ('9780007562251', 4, 2, 10, 'Assassin''s Apprentice');
-INSERT INTO books (isbn, genre_id, author_id, amount, title) VALUES ('9780765365279', 4, 1, 10, 'The Way of Kings');
+INSERT INTO statuses (status) VALUES ('IN STOCK');
+INSERT INTO statuses (status) VALUES ('WITHDRAWN');
+INSERT INTO statuses (status) VALUES ('NO STOCK');
+
+INSERT INTO books (isbn, genre_id, author_id, title, status_id) VALUES ('1593083327', 9, 5, 'A Tale of Two Cities', 1);
+INSERT INTO books (isbn, genre_id, author_id, title, status_id) VALUES ('0671455990', 10, 5, 'A Christmas Carol', 1);
+INSERT INTO books (isbn, genre_id, author_id, title, status_id) VALUES ('9781909621411', 11, 6, 'A Farewell To Arms', 1);
+INSERT INTO books (isbn, genre_id, author_id, title, status_id) VALUES ('9780451524935', 12, 4, '1984', 1);
+INSERT INTO books (isbn, genre_id, author_id, title, status_id) VALUES ('9780451526342', 13, 4, 'Animal Farm', 1);
+INSERT INTO books (isbn, genre_id, author_id, title, status_id) VALUES ('9781501142970', 14, 3, 'IT', 2);
+INSERT INTO books (isbn, genre_id, author_id, title, status_id) VALUES ('9780007562251', 4, 2, 'Assassin''s Apprentice', 3);
+INSERT INTO books (isbn, genre_id, author_id, title, status_id) VALUES ('9780765365279', 4, 1, 'The Way of Kings', 3);
 
 INSERT INTO customers (first_name, last_name, email) VALUES ('Elijah', 'Wood', 'realemail1@whoschecking.com');
 INSERT INTO customers (first_name, last_name, email) VALUES ('Sean', 'Astin', 'realemail2@whoschecking.com');

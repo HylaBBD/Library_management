@@ -8,11 +8,10 @@ import javax.persistence.Id;
 
 @Data
 @NoArgsConstructor
-@Entity(name = "authors")
-public class Author {
+@Entity(name = "statuses")
+public class Status {
     @Id
     @GeneratedValue
-    private int author_id;
-    private String first_name;
-    private String last_name;
+    private int status_id;
+    private String status;
 }
