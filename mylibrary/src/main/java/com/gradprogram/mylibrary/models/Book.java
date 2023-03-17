@@ -3,6 +3,7 @@ package com.gradprogram.mylibrary.models;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -13,15 +14,22 @@ public class Book {
     private int book_id;
     private String isbn;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "author_id")
-    private Author author;
-    private int amount;
+    @ManyToMany
+    @JoinTable(
+            name = "book_authors",
+            joinColumns = {@JoinColumn(name = "book_id")},
+            inverseJoinColumns = {@JoinColumn(name = "author_id")}
+    )
+    private List<Author> authors;
     private int title;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "genre_id")
-    private Genre genre;
+    @ManyToMany
+    @JoinTable(
+            name = "book_genres",
+            joinColumns = {@JoinColumn(name = "book_id")},
+            inverseJoinColumns = {@JoinColumn(name = "genre_id")}
+    )
+    private List<Genre> genres;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "status_id")

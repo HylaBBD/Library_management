@@ -19,19 +19,43 @@ INSERT INTO genres (genre_name) VALUES ('Realism');//11
 INSERT INTO genres (genre_name) VALUES ('Dystopian');//12
 INSERT INTO genres (genre_name) VALUES ('Political satire');//13
 INSERT INTO genres (genre_name) VALUES ('Horror');//14
+INSERT INTO genres (genre_name) VALUES ('War');//15
 
 INSERT INTO statuses (status) VALUES ('IN STOCK');
 INSERT INTO statuses (status) VALUES ('WITHDRAWN');
 INSERT INTO statuses (status) VALUES ('NO STOCK');
 
-INSERT INTO books (isbn, genre_id, author_id, title, status_id) VALUES ('1593083327', 9, 5, 'A Tale of Two Cities', 1);
-INSERT INTO books (isbn, genre_id, author_id, title, status_id) VALUES ('0671455990', 10, 5, 'A Christmas Carol', 1);
-INSERT INTO books (isbn, genre_id, author_id, title, status_id) VALUES ('9781909621411', 11, 6, 'A Farewell To Arms', 1);
-INSERT INTO books (isbn, genre_id, author_id, title, status_id) VALUES ('9780451524935', 12, 4, '1984', 1);
-INSERT INTO books (isbn, genre_id, author_id, title, status_id) VALUES ('9780451526342', 13, 4, 'Animal Farm', 1);
-INSERT INTO books (isbn, genre_id, author_id, title, status_id) VALUES ('9781501142970', 14, 3, 'IT', 2);
-INSERT INTO books (isbn, genre_id, author_id, title, status_id) VALUES ('9780007562251', 4, 2, 'Assassin''s Apprentice', 3);
-INSERT INTO books (isbn, genre_id, author_id, title, status_id) VALUES ('9780765365279', 4, 1, 'The Way of Kings', 3);
+INSERT INTO books (isbn, title, status_id) VALUES ('1593083327', 'A Tale of Two Cities', 1);
+INSERT INTO books (isbn, title, status_id) VALUES ('0671455990', 'A Christmas Carol', 1);
+INSERT INTO books (isbn, title, status_id) VALUES ('9781909621411', 'A Farewell To Arms', 1);
+INSERT INTO books (isbn, title, status_id) VALUES ('9780451524935', '1984', 1);
+INSERT INTO books (isbn, title, status_id) VALUES ('9780451526342', 'Animal Farm', 1);
+INSERT INTO books (isbn, title, status_id) VALUES ('9781501142970', 'IT', 2);
+INSERT INTO books (isbn, title, status_id) VALUES ('9780007562251', 'Assassin''s Apprentice', 3);
+INSERT INTO books (isbn, title, status_id) VALUES ('9780765365279', 'The Way of Kings', 3);
+
+INSERT INTO books_authors (book_id, author_id) VALUES (1, 5);
+INSERT INTO books_authors (book_id, author_id) VALUES (2, 5);
+INSERT INTO books_authors (book_id, author_id) VALUES (3, 6);
+INSERT INTO books_authors (book_id, author_id) VALUES (4, 4);
+INSERT INTO books_authors (book_id, author_id) VALUES (5, 4);
+INSERT INTO books_authors (book_id, author_id) VALUES (6, 3);
+INSERT INTO books_authors (book_id, author_id) VALUES (7, 2);
+INSERT INTO books_authors (book_id, author_id) VALUES (8, 1);
+
+INSERT INTO books_genres (book_id, genre_id) VALUES (1, 9);
+INSERT INTO books_genres (book_id, genre_id) VALUES (2, 9);
+INSERT INTO books_genres (book_id, genre_id) VALUES (2, 10);
+INSERT INTO books_genres (book_id, genre_id) VALUES (3, 11);
+INSERT INTO books_genres (book_id, genre_id) VALUES (3, 15);
+INSERT INTO books_genres (book_id, genre_id) VALUES (4, 12);
+INSERT INTO books_genres (book_id, genre_id) VALUES (4, 13);
+INSERT INTO books_genres (book_id, genre_id) VALUES (5, 12);
+INSERT INTO books_genres (book_id, genre_id) VALUES (5, 13);
+INSERT INTO books_genres (book_id, genre_id) VALUES (6, 14);
+INSERT INTO books_genres (book_id, genre_id) VALUES (7, 6);
+INSERT INTO books_genres (book_id, genre_id) VALUES (8, 6);
+
 
 INSERT INTO customers (first_name, last_name, email) VALUES ('Elijah', 'Wood', 'realemail1@whoschecking.com');
 INSERT INTO customers (first_name, last_name, email) VALUES ('Sean', 'Astin', 'realemail2@whoschecking.com');
