@@ -11,7 +11,7 @@ import java.util.List;
 @Entity(name = "withdrawals")
 public class Withdrawal {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long withdrawal_id;
 
     @OneToOne(cascade = CascadeType.ALL)

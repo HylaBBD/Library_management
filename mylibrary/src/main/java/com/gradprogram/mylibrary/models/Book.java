@@ -15,7 +15,7 @@ import java.util.List;
 @Entity(name = "books")
 public class Book {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long book_id;
     private String isbn;
 

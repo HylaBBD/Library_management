@@ -13,7 +13,7 @@ import java.util.List;
 @Entity(name = "authors")
 public class Author {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long author_id;
     private String first_name;
     private String last_name;
