@@ -18,15 +18,15 @@ CREATE TABLE withdrawals(
     withdrawal_id identity primary key,
     customer_id int not null,
     book_id int not null,
-    start_date date not null
+    start_date date not null,
+    end_date date
 );
 
 CREATE TABLE books(
     book_id identity primary key,
     isbn varchar(100) not null,
     title varchar(100) not null,
-    status_id int not null,
-    withdrawal_id int
+    status_id int not null
 );
 
 CREATE TABLE books_authors(

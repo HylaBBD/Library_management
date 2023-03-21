@@ -22,4 +22,5 @@ public class Withdrawal {
     @JoinColumn(name = "book_id")
     private List<Book> books;
     private Date start_date;
+    private Date end_date;
 }
