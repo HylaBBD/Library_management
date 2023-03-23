@@ -23,7 +23,6 @@ INSERT INTO genres (genre_name) VALUES ('Horror');
 INSERT INTO genres (genre_name) VALUES ('War');
 
 INSERT INTO statuses (status) VALUES ('IN STOCK');
-INSERT INTO statuses (status) VALUES ('IN STOCK');
 INSERT INTO statuses (status) VALUES ('WITHDRAWN');
 INSERT INTO statuses (status) VALUES ('NO STOCK');
 

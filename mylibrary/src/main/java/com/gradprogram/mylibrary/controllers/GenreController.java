@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
@@ -26,7 +25,7 @@ public class GenreController {
 
     @PostMapping("/add")
     public ResponseEntity<Genre> addNewGenre(@RequestBody Genre newGenre){
-        return new ResponseEntity<Genre>(genreRepository.save(newGenre), HttpStatus.CREATED);
+        return new ResponseEntity<>(genreRepository.save(newGenre), HttpStatus.CREATED);
     }
 
     @GetMapping("/all")
@@ -53,14 +52,14 @@ public class GenreController {
     }
 
     private Link createSelfHateoasLinkGet(Long id){
-        return linkTo(methodOn(GenreController.class).get(id)).withSelfRel();
+        return linkTo(methodOn(this.getClass()).get(id)).withSelfRel();
     }
 
     private Link createSelfHateoasLinkAll(){
-        return linkTo(methodOn(GenreController.class).all()).withSelfRel();
+        return linkTo(methodOn(this.getClass()).all()).withSelfRel();
     }
 
     private Link createSelfHateoasLinkAllWithRel(){
-        return linkTo(methodOn(GenreController.class).all()).withRel("bookings");
+        return linkTo(methodOn(this.getClass()).all()).withRel("genres");
     }
 }

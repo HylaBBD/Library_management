@@ -12,13 +12,15 @@ import com.gradprogram.mylibrary.models.Withdrawal;
 import com.gradprogram.mylibrary.repositories.WithdrawalRepository;
 
 @RestController
-@RequestMapping("/withdrawlal")
+@RequestMapping("/withdrawal")
 public class WithdrawalController {
     
     @Autowired WithdrawalRepository withdrawalRepository;
 
     @PostMapping("/add")
     public ResponseEntity<Withdrawal> addNewWithdrawal(@RequestBody Withdrawal newWithdrawal){
-        return new ResponseEntity<Withdrawal>(withdrawalRepository.save(newWithdrawal),HttpStatus.CREATED);
+        //TODO before accepting the withdrawal the status of the books need to be checked to see if the library has them/
+        //Must check this from the DB directly not from newWithdrawal since newWithdrawal will be setting them to withdrawn
+        return new ResponseEntity<>(withdrawalRepository.save(newWithdrawal),HttpStatus.CREATED);
     }
 }
