@@ -79,11 +79,11 @@ INSERT INTO customers (first_name, last_name, email) VALUES ('Cobie', 'Smulders'
 INSERT INTO customers (first_name, last_name, email) VALUES ('Alyson', 'Hannigan', 'realemail16@whoschecking.com');
 INSERT INTO customers (first_name, last_name, email) VALUES ('Jason', 'Segel', 'realemail17@whoschecking.com');
 
-INSERT INTO withdrawals (customer_id, book_id, start_date) VALUES (1, 1, '2023-03-16');
-INSERT INTO withdrawals (customer_id, book_id, start_date) VALUES (2, 2, '2023-03-16');
-INSERT INTO withdrawals (customer_id, book_id, start_date) VALUES (3, 3, '2023-03-16');
-INSERT INTO withdrawals (customer_id, book_id, start_date) VALUES (4, 4, '2023-03-16');
-INSERT INTO withdrawals (customer_id, book_id, start_date) VALUES (5, 5, '2023-03-16');
+-- INSERT INTO withdrawals (customer_id, start_date) VALUES (1, '2023-03-16');
+-- INSERT INTO withdrawals (customer_id, start_date) VALUES (2, '2023-03-16');
+-- INSERT INTO withdrawals (customer_id, start_date) VALUES (3, '2023-03-16');
+-- INSERT INTO withdrawals (customer_id, start_date) VALUES (4, '2023-03-16');
+-- INSERT INTO withdrawals (customer_id, start_date) VALUES (5, '2023-03-16');
 
 
 
