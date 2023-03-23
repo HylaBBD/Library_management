@@ -6,6 +6,7 @@ DROP TABLE IF EXISTS books_genres;
 DROP TABLE IF EXISTS genres;
 DROP TABLE IF EXISTS authors;
 DROP TABLE IF EXISTS statuses;
+DROP TABLE IF EXISTS withdrawals_books;
 
 CREATE TABLE customers(
    customer_id identity primary key,
@@ -17,9 +18,14 @@ CREATE TABLE customers(
 CREATE TABLE withdrawals(
     withdrawal_id identity primary key,
     customer_id int not null,
-    book_id int not null,
     start_date date not null,
     end_date date
+);
+
+CREATE TABLE withdrawals_books(
+    withdrawals_books_id identity primary key,
+    withdrawal_id int not null,
+    book_id int not null
 );
 
 CREATE TABLE books(

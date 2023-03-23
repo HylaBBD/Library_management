@@ -72,7 +72,18 @@
 			<artifactId>lombok</artifactId>
 			<version>1.18.26</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-hateoas</artifactId>
+			<version>1.6.14</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-hateoas</artifactId>
+		</dependency>
 	</dependencies>
+
 
 	<build>
 		<plugins>

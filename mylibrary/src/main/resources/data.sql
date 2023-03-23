@@ -23,7 +23,6 @@ INSERT INTO genres (genre_name) VALUES ('Horror');
 INSERT INTO genres (genre_name) VALUES ('War');
 
 INSERT INTO statuses (status) VALUES ('IN STOCK');
-INSERT INTO statuses (status) VALUES ('IN STOCK');
 INSERT INTO statuses (status) VALUES ('WITHDRAWN');
 INSERT INTO statuses (status) VALUES ('NO STOCK');
 
@@ -80,11 +79,11 @@ INSERT INTO customers (first_name, last_name, email) VALUES ('Cobie', 'Smulders'
 INSERT INTO customers (first_name, last_name, email) VALUES ('Alyson', 'Hannigan', 'realemail16@whoschecking.com');
 INSERT INTO customers (first_name, last_name, email) VALUES ('Jason', 'Segel', 'realemail17@whoschecking.com');
 
-INSERT INTO withdrawals (customer_id, book_id, start_date) VALUES (1, 1, '2023-03-16');
-INSERT INTO withdrawals (customer_id, book_id, start_date) VALUES (2, 2, '2023-03-16');
-INSERT INTO withdrawals (customer_id, book_id, start_date) VALUES (3, 3, '2023-03-16');
-INSERT INTO withdrawals (customer_id, book_id, start_date) VALUES (4, 4, '2023-03-16');
-INSERT INTO withdrawals (customer_id, book_id, start_date) VALUES (5, 5, '2023-03-16');
+-- INSERT INTO withdrawals (customer_id, start_date) VALUES (1, '2023-03-16');
+-- INSERT INTO withdrawals (customer_id, start_date) VALUES (2, '2023-03-16');
+-- INSERT INTO withdrawals (customer_id, start_date) VALUES (3, '2023-03-16');
+-- INSERT INTO withdrawals (customer_id, start_date) VALUES (4, '2023-03-16');
+-- INSERT INTO withdrawals (customer_id, start_date) VALUES (5, '2023-03-16');
 
 
 

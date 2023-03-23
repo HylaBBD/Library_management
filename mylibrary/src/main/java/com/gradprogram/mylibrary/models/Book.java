@@ -1,10 +1,11 @@
 package com.gradprogram.mylibrary.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -21,7 +22,7 @@ public class Book {
             joinColumns = {@JoinColumn(name = "book_id")},
             inverseJoinColumns = {@JoinColumn(name = "author_id")}
     )
-    @JsonIgnore
+//    @JsonIgnore
     private List<Author> authors;
     private String title;
 
@@ -31,9 +32,9 @@ public class Book {
             joinColumns = {@JoinColumn(name = "book_id")},
             inverseJoinColumns = {@JoinColumn(name = "genre_id")}
     )
-    private List<Genre> genres;
+    private Set<Genre> genres;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "status_id")
     private Status status;
 
