@@ -17,6 +17,7 @@ import com.gradprogram.mylibrary.models.Customer;
 import com.gradprogram.mylibrary.repositories.CustomerRepository;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 
 @RestController
 public class CustomerController {
@@ -48,7 +49,7 @@ public class CustomerController {
 
     @GetMapping("/customer/{customerId}")
     @Operation(summary = "Retrieve a customer by their customer Id")
-    public ResponseEntity<Customer> customerByCustomerId(@PathVariable Long customerId){
+    public ResponseEntity<Customer> customerByCustomerId(@Parameter(description = "The customer Id of the customer whose information is being updated")@PathVariable Long customerId){
         return new ResponseEntity<Customer>(customerRepository.findById(customerId).orElseThrow(() -> new NotFoundException("Customer",customerId)), HttpStatus.OK);
     }
 }
