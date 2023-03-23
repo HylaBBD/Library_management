@@ -10,11 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.gradprogram.mylibrary.models.Book;
 import com.gradprogram.mylibrary.repositories.BookRepository;
 
+import io.swagger.v3.oas.annotations.Operation;
+
 @RestController
 public class bookController {
     @Autowired BookRepository bookRepository;
 
     @PostMapping("/book")
+    @Operation(summary = "Allows you to record a book that is added to a library")
     public ResponseEntity<Book> addNewBook(@RequestBody Book newBook){
         return new ResponseEntity<Book>(bookRepository.save(newBook),HttpStatus.CREATED);   
     }

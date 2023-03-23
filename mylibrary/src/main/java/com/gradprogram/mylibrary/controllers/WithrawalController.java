@@ -10,12 +10,15 @@ import org.springframework.web.bind.annotation.RestController;
 import com.gradprogram.mylibrary.models.Withdrawal;
 import com.gradprogram.mylibrary.repositories.WithdrawalRepository;
 
+import io.swagger.v3.oas.annotations.Operation;
+
 @RestController
 public class WithrawalController {
     
     @Autowired WithdrawalRepository withdrawalRepository;
 
     @PostMapping("/withdrawal")
+    @Operation(summary = "Allows you to log a new withdrawal")
     public ResponseEntity<Withdrawal> addNewWithdrawal(@RequestBody Withdrawal newWithdrawal){
         return new ResponseEntity<Withdrawal>(withdrawalRepository.save(newWithdrawal),HttpStatus.CREATED);
     }
