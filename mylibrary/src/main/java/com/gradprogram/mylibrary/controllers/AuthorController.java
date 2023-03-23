@@ -4,6 +4,7 @@ import com.gradprogram.mylibrary.NotFoundException;
 import com.gradprogram.mylibrary.models.Author;
 import com.gradprogram.mylibrary.models.Book;
 import com.gradprogram.mylibrary.repositories.AuthorRepository;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
@@ -26,6 +27,7 @@ public class AuthorController {
     AuthorRepository authorRepository;
 
     @GetMapping("/all")
+    @Operation(summary = "Get all Authors")
     public ResponseEntity<CollectionModel<EntityModel<Author>>> all(){
         List<EntityModel<Author>> statuses = authorRepository.findAll().stream()
                 .map(status -> EntityModel.of(
@@ -36,11 +38,13 @@ public class AuthorController {
     }
 
     @PostMapping("/add")
+    @Operation(summary = "Record a new Author")
     public ResponseEntity<Author> addNewAuthor(@RequestBody Author newAuthor){
         return new ResponseEntity<>(authorRepository.save(newAuthor), HttpStatus.CREATED);
     }
 
     @PutMapping("/{authorId}")
+    @Operation(summary = "Update Author by ID")
     public ResponseEntity<?> changeStatus(@PathVariable Long authorId, @RequestBody Author authorInfo){
         authorInfo.setAuthor_id(authorId);
         Author updatedAuthor = authorRepository.findById(authorId).orElseThrow(() -> new NotFoundException("Author", authorId)); //TODO returns 500
@@ -51,6 +55,7 @@ public class AuthorController {
     }
 
     @GetMapping("/{authorId}")
+    @Operation(summary = "Get Author BY ID")
     public ResponseEntity<EntityModel<Author>> get(@PathVariable Long authorId){
         Optional<Author> response = authorRepository.findById(authorId);
         if (response.isPresent()){ //TODO refactor to streams otherwise this sucks
@@ -64,6 +69,7 @@ public class AuthorController {
     }
 
     @GetMapping("/{authorId}/books")
+    @Operation(summary = "Get all books for an Author")
     public ResponseEntity<CollectionModel<EntityModel<Book>>> getAuthorBooks(@PathVariable Long authorId){
         Optional<Author> response = authorRepository.findById(authorId);
         if (response.isPresent()){ //TODO refactor to streams otherwise this sucks

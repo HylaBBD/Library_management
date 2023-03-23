@@ -3,6 +3,7 @@ package com.gradprogram.mylibrary.controllers;
 import com.gradprogram.mylibrary.NotFoundException;
 import com.gradprogram.mylibrary.models.Customer;
 import com.gradprogram.mylibrary.repositories.CustomerRepository;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
@@ -18,10 +19,8 @@ import java.util.stream.Collectors;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
-
 @RestController
+@RequestMapping("/customer")
 public class CustomerController {
     
     @Autowired CustomerRepository customerRepository;
@@ -29,7 +28,7 @@ public class CustomerController {
     @PostMapping("/add")
     @Operation(summary = "Record a new customer")
     public ResponseEntity<Customer> add(@RequestBody Customer newCustomer){
-        return new ResponseEntity<Customer>(customerRepository.save(newCustomer), HttpStatus.CREATED);
+        return new ResponseEntity<>(customerRepository.save(newCustomer), HttpStatus.CREATED);
     }
 
     @Operation(summary = "Alter customer information")

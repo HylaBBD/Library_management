@@ -5,6 +5,7 @@ import com.gradprogram.mylibrary.models.Status;
 import com.gradprogram.mylibrary.models.Withdrawal;
 import com.gradprogram.mylibrary.repositories.BookRepository;
 import com.gradprogram.mylibrary.repositories.WithdrawalRepository;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
@@ -30,6 +31,7 @@ public class WithdrawalController {
     BookRepository bookRepository;
 
     @GetMapping("/all")
+    @Operation(summary = "Record a new withdrawal")
     public ResponseEntity<CollectionModel<EntityModel<Withdrawal>>> all(){
         List<EntityModel<Withdrawal>> withdrawals = withdrawalRepository.findAll().stream()
                 .map(withdrawal -> EntityModel.of(
@@ -40,6 +42,7 @@ public class WithdrawalController {
     }
 
     @PostMapping("/add")
+    @Operation(summary = "Record a new withdrawal")
     public ResponseEntity<?> addNewWithdrawal(@RequestBody Withdrawal newWithdrawal){
         List<Long> booksToBeWithdrawn = newWithdrawal.getBooks().stream().map(Book::getBook_id).collect(Collectors.toList());
         List<Long> availableBooks = bookRepository.findAll().stream()
@@ -61,6 +64,7 @@ public class WithdrawalController {
     }
 
     @PostMapping("/return")
+    @Operation(summary = "Return books and end a withdrawal")
     public ResponseEntity<String> returnBooks(@RequestBody Withdrawal oldWithdrawal) {
         List<Long> booksToBeReturned = oldWithdrawal.getBooks().stream().map(Book::getBook_id).collect(Collectors.toList());
         List<Book> books = bookRepository.findAllById(booksToBeReturned);
@@ -71,6 +75,7 @@ public class WithdrawalController {
 
 
     @GetMapping("/{withdrawalId}")
+    @Operation(summary = "Get a withdrawal by ID")
     public ResponseEntity<EntityModel<Withdrawal>> get(@PathVariable Long withdrawalId){
         Optional<Withdrawal> response = withdrawalRepository.findById(withdrawalId);
         if (response.isPresent()){ //TODO refactor to streams otherwise this sucks

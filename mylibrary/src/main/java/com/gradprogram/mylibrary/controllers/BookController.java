@@ -1,6 +1,7 @@
 package com.gradprogram.mylibrary.controllers;
 
 import com.gradprogram.mylibrary.NotFoundException;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
@@ -30,6 +31,7 @@ public class BookController {
     BookRepository bookRepository;
 
     @GetMapping("/all")
+    @Operation(summary = "Get all Books")
     public ResponseEntity<CollectionModel<EntityModel<Book>>> all() {
         List<EntityModel<Book>> books = bookRepository.findAll().stream()
                 .map(book -> EntityModel.of(
@@ -40,11 +42,13 @@ public class BookController {
     }
 
     @PostMapping("/add")
+    @Operation(summary = "Record a new Book")
     public ResponseEntity<Book> addNewBook(@RequestBody Book newBook) {
         return new ResponseEntity<>(bookRepository.save(newBook), HttpStatus.CREATED);
     }
 
     @GetMapping("/{customerId}")
+    @Operation(summary = "Get a Book by ID")
     public ResponseEntity<EntityModel<Book>> get(@PathVariable Long customerId) {
         Optional<Book> response = bookRepository.findById(customerId);
         if (response.isPresent()) { //TODO refactor to streams otherwise this sucks
@@ -58,6 +62,7 @@ public class BookController {
     }
 
     @PutMapping("/{bookId}")
+    @Operation(summary = "Update a Book by ID")
     public ResponseEntity<?> changeBookInformation(@PathVariable Long bookId, @RequestBody Book bookInfo) {
         bookInfo.setBook_id(bookId);
         Book updatedBook = bookRepository.findById(bookId).orElseThrow(() -> new NotFoundException("Book", bookId));

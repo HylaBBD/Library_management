@@ -2,6 +2,7 @@ package com.gradprogram.mylibrary.controllers;
 
 import com.gradprogram.mylibrary.models.Genre;
 import com.gradprogram.mylibrary.repositories.GenreRepository;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
@@ -24,11 +25,13 @@ public class GenreController {
     GenreRepository genreRepository;
 
     @PostMapping("/add")
+    @Operation(summary = "Record a new genre")
     public ResponseEntity<Genre> addNewGenre(@RequestBody Genre newGenre){
         return new ResponseEntity<>(genreRepository.save(newGenre), HttpStatus.CREATED);
     }
 
     @GetMapping("/all")
+    @Operation(summary = "Get all genres")
     public  ResponseEntity<CollectionModel<EntityModel<Genre>>> all(){
         List<EntityModel<Genre>> genres = genreRepository.findAll().stream()
                 .map(genre -> EntityModel.of(
@@ -39,6 +42,7 @@ public class GenreController {
     }
 
     @GetMapping("/{id}")
+    @Operation(summary = "Get a genre by ID")
     public ResponseEntity<?> get(@PathVariable Long id){
         Optional<Genre> response = genreRepository.findById(id);
         if (response.isPresent()){ //TODO refactor to streams otherwise this sucks
