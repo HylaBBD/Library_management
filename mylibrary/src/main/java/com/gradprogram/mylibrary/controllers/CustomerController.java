@@ -5,28 +5,24 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.gradprogram.mylibrary.NotFoundException;
 import com.gradprogram.mylibrary.models.Customer;
 import com.gradprogram.mylibrary.repositories.CustomerRepository;
 
 @RestController
+@RequestMapping("/customer")
 public class CustomerController {
     
     @Autowired CustomerRepository customerRepository;
 
-    @PostMapping("/customer")
+    @PostMapping("/add")
     public ResponseEntity<Customer> addNewCustomer(@RequestBody Customer newCustomer){
         return new ResponseEntity<Customer>(customerRepository.save(newCustomer), HttpStatus.CREATED);
     }
 
-    @PutMapping("/customer/{customerId}")
+    @PutMapping("/{customerId}")
     public ResponseEntity<Customer> changeCustomerInformation(@PathVariable Long customerId,@RequestBody Customer customerInfo){
         customerInfo.setCustomer_id(customerId);
         Customer updatedCustomer = customerRepository.findById(customerId).orElseThrow(() -> new NotFoundException("Customer", customerId));
@@ -36,12 +32,12 @@ public class CustomerController {
         return new ResponseEntity<Customer>(customerRepository.save(updatedCustomer),HttpStatus.ACCEPTED);
     }
 
-    @GetMapping("/customer")
+    @GetMapping("/all")
     public ResponseEntity<List<Customer>> allCustomers(){
         return new ResponseEntity<List<Customer>>(customerRepository.findAll(),HttpStatus.OK);
     }
 
-    @GetMapping("/customer/{customerId}")
+    @GetMapping("/{customerId}")
     public ResponseEntity<Customer> customerByCustomerId(@PathVariable Long customerId){
         return new ResponseEntity<Customer>(customerRepository.findById(customerId).orElseThrow(() -> new NotFoundException("Customer",customerId)), HttpStatus.OK);
     }

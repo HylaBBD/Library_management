@@ -7,14 +7,16 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/author")
 public class AuthorController {
     @Autowired
     AuthorRepository authorRepository;
 
-    @PostMapping("/author")
+    @PostMapping("/add")
     public ResponseEntity<Author> addNewAuthor(@RequestBody Author newAuthor){
         return new ResponseEntity<Author>(authorRepository.save(newAuthor), HttpStatus.CREATED);
     }
