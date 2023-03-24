@@ -38,7 +38,7 @@
                 <br>
                 <br>
                 <p>
-                <button onclick={addNewCustomer}>
+                <button onclick="{addNewCustomer}">
                 Add a New Customer
                 </button>
                 </p>

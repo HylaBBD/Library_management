@@ -18,7 +18,7 @@
                 ISBN: <input type="text" name="isbn"/>
 
                 <input type="submit"/>
-                <button onclick={addNewBook}>Add a Book</button>
+                <button onclick="{addNewBook}">Add a Book</button>
                 
             </form>
         </div>
